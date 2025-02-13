@@ -1,0 +1,32 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block content %}
+<main class="section" style="background-color:var(--color_theme_2);">
+	<div class="container">
+		{% if error_message %}
+			<div class="block">
+				<div class="box box--alert">{{ error_message }}</div>
+			</div>
+		{% endif %}
+		<div class="block">
+			<form method="post" class="grid" autocomplete="off">
+				<div class="field">
+					<label for="username">Email</label>
+					<div class="control">
+						<input type="email" id="email" name="email" value="{{ email }}">
+					</div>
+				</div>
+				<div class="field">
+					<label for="password">Password</label>
+					<div class="control">
+						<input type="password" id="password" name="password">
+					</div>
+				</div>
+				<div class="field">
+					<button type="submit" class="button">Login</button>
+				</div>
+			</form>
+		</div>
+	</main>
+</div>
+{% endblock %}

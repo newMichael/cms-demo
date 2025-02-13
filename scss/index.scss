@@ -1,0 +1,52 @@
+@layer reset;
+
+@import 'reset';
+@import 'elements/_all';
+@import 'layout/container';
+@import 'components/_all';
+@import 'templates/_all';
+
+:root {
+	--ff_body: Helvetica, Arial, sans-serif;
+
+	--color_dark_1: #0A0A15;
+	--color_dark_2: #222230;
+	--color_dark_3: #393947;
+	--color_dark_4: #51515E;
+	--color_dark_5: #696975;
+	--color_dark_7: #81818C;
+	--color_dark_8: #9999A3;
+	--color_dark_9: #B1B1B9;
+	--color_dark_10: #C9C9CF;
+	--color_dark_11: #EBEBED;
+	--color_dark_12: #F8F8F9;
+	
+	--color_theme_1: var(--color_dark_11);
+	--color_theme_2: var(--color_dark_12);
+
+	--color_document_bg: var(--color_theme_1);	
+	--color_field_bg: var(--color_theme_1);
+
+	--color_text: var(--color_dark_1);
+	--color_placeholder: var(--color_dark_1);
+}
+
+html {
+	.dark-theme {
+		--color_theme_1: var(--color_dark_1);
+		--color_theme_2: var(--color_dark_2);
+
+		--color_document_bg: var(--color_theme_1);	
+		--color_field_bg: var(--color_theme_1);
+
+		--color_text: var(--color_dark_12);
+		--color_placeholder: var(--color_dark_7);
+	}
+}
+body {
+	font-size: 1.25rem;
+	font-family: var(--ff_body);
+	color: var(--color_text);
+	background-color: var(--color_document_bg);
+	transition: color 0.3s, background-color 0.3s;
+}

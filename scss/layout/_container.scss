@@ -1,0 +1,85 @@
+@layer layout {
+	.app-layout {
+		display: grid;
+		grid-template-columns: 440px 1fr;
+		gap: 10px;
+		margin-block: 10px;
+		width: 100%;
+	}
+	.app-sidebar {
+		li a {
+			display: flex;
+			gap: 20px;
+			padding-block: 0.875rem;
+			padding-inline: 30px;
+			color: var(--color_dark_7);
+			border-radius: 10px;
+
+			&[aria-current="page"] {
+				color: var(--color_text);
+				background-color: var(--color_theme_2);
+			}
+			svg {
+				width: 20px;
+			}
+		}
+	}
+
+	.container {
+		width: 100%;
+		max-width: 1840px;
+		margin-inline: auto; 
+		padding: 0 20px;
+	}
+	.section {
+		padding-block: 5rem;
+	}
+	.block:has(+ .block) {
+		margin-block-end: 2rem;
+	}
+	.grid {
+		--grid_columns: 1;
+		display: grid;
+		grid-template-columns: repeat(var(--grid_columns), 1fr);
+		gap: 20px;
+
+		.col-full {
+			grid-column: 1 / -1;
+		}
+		.col-half {
+			grid-column: span calc(var(--grid_columns) / 2);
+		}
+	}
+	.level {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.editor-content {
+		h1, h2, h3, h4, h5, h6 {
+			margin-block: 1em 1rem;
+		}
+		p {
+			margin-block: 1rem;
+		}
+		> :first-child {
+			margin-block-start: 0;
+		}
+		> :last-child {
+			margin-block-end: 0;
+		}
+	}
+
+	// .app-layout {
+	// 	display: grid;
+	// 	grid-template-columns: 400px 1fr;
+	// 	gap: 20px;
+
+	// 	> * {
+	// 		padding-block: 2rem;
+	// 	}
+	// 	aside li {
+	// 		margin-block-end: .5rem;
+	// 	}
+	// }
+}

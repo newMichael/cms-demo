@@ -1,0 +1,27 @@
+{% extends "layouts/document.html.twig" %}
+
+{% block body %}
+<div class="app">
+	{% block content %}{% endblock %}
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const colorSchemeCheckbox = document.getElementById('color-scheme');
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+		if (prefersDarkScheme) {
+			colorSchemeCheckbox.checked = true;
+			document.body.classList.add('dark-theme');
+		}
+
+		colorSchemeCheckbox.addEventListener('change', function() {
+			if (colorSchemeCheckbox.checked) {
+				document.body.classList.add('dark-theme');
+			} else {
+				document.body.classList.remove('dark-theme');
+			}
+		});
+	});
+</script>
+{% endblock %}

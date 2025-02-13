@@ -1,0 +1,9 @@
+.env
+/vendor/
+composer.lock
+*.swp
+*.bak
+*.tmp
+*.log
+*.css.map
+.ddev

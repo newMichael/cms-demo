@@ -1,0 +1,21 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block content %}
+	<div class="panel">
+		<h2 style="margin-block-end: 30px;">Pages</h2>
+		<ul class="page-tree">
+			{% for page in page_tree %}
+				{% include 'partials/page_tree.html.twig' with {'page': page} %}
+			{% endfor %}
+		</ul>
+	</div>
+
+	<script>
+		document.querySelectorAll('.expandable-icon').forEach(function(icon) {
+			icon.addEventListener('click', function() {
+				const isExpanded = icon.getAttribute('aria-expanded') === 'true';
+				icon.setAttribute('aria-expanded', !isExpanded);
+			});
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layouts/document.html.twig" %}
+
+{% block body %}
+<div class="app">
+	<header>
+		<div class="navbar">
+			<div class="container">
+				<div class="navbar-inner">
+					<div class="app-layout">
+						<p class="navbar-logo">CMS</p>
+						<div class="navbar-end">
+							<div class="field">
+								<input type="text" name="search" placeholder="Search">
+							</div>
+							<div>
+								<input type="checkbox" id="color-scheme" name="color_scheme" value="dark">
+							</div>
+							<button class="circle-button"></button>
+							<button class="circle-button"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		<div class="app-layout">
+			<nav class="app-sidebar">
+				<ul>
+					<li>
+						<a href="{{ url_for('dashboard') }}" {% if current_route == 'dashboard' %}aria-current="page"{% endif %}>
+							{% include '/icons/pie-chart.svg' %} Dashboard
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('pages') }}" {% if current_route == 'pages' %}aria-current="page"{% endif %}>
+							{% include '/icons/tree.svg' %} Pages
+						</a>
+					</li>
+					<li>
+						<a href="#" {% if current_route == 'modules' %}aria-current="page"{% endif %}>
+							{% include '/icons/cube.svg' %} Modules
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<main>
+				{% block content %}{% endblock %}
+			</main>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const colorSchemeCheckbox = document.getElementById('color-scheme');
+		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+		if (prefersDarkScheme) {
+			colorSchemeCheckbox.checked = true;
+			document.body.classList.add('dark-theme');
+		}
+
+		colorSchemeCheckbox.addEventListener('change', function() {
+			if (colorSchemeCheckbox.checked) {
+				document.body.classList.add('dark-theme');
+			} else {
+				document.body.classList.remove('dark-theme');
+			}
+		});
+	});
+</script>
+{% endblock %}

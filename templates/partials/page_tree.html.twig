@@ -1,0 +1,27 @@
+<li>
+	<div class="page-item">
+		{% if page.children is defined %}
+			<button class="expandable-icon" aria-expanded="false">
+				{% include '/icons/arrow-right.svg' %}
+			</button>
+			<div class="item-icon">
+				{% include '/icons/folder.svg' %}
+			</div>
+		{% else %}
+			<div class="item-icon">
+				{% include '/icons/page.svg' %}
+			</div>
+		{% endif %}
+
+		<a href="/admin/pages/{{ page.page_id }}">
+			{{ page.title }}
+		</a>
+	</div>
+	{% if page.children is defined %}
+		<ul>
+			{% for child in page.children %}
+				{% include 'partials/page_tree.html.twig' with {'page': child} %}
+			{% endfor %}
+		</ul>
+	{% endif %}
+</li>
