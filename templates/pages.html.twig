@@ -2,7 +2,15 @@
 
 {% block content %}
 	<div class="panel">
-		<h2 style="margin-block-end: 30px;">Pages</h2>
+		{% if error_message %}
+			<div class="block mbe-6">
+				<div class="box box--alert">{{ error_message }}</div>
+			</div>
+		{% endif %}
+		<div class="mbe-4 level">
+			<h2>Pages</h2>
+			<button class="fs-s" data-add-page="" data-uri="">Add Page</button>
+		</div>
 		<ul class="page-tree">
 			{% for page in page_tree %}
 				{% include 'partials/page_tree.html.twig' with {'page': page} %}
@@ -10,12 +18,59 @@
 		</ul>
 	</div>
 
+	<dialog id="add-page-dialog" class="dialog">
+		<div class="container">
+			<h2 class="mbe-6">Add Page</h2>
+
+			<form method="post" action="/admin/pages" autocomplete="off">
+				<input type="hidden" name="parent_id" value="0">
+				<input type="hidden" name="slug" value="">
+				<div class="grid mbe-4">
+					<div class="field">
+						<label for="page-title">Page Title</label>
+						<div class="control">
+							<input type="text" name="title" id="page-title" required>
+						</div>
+					</div>
+					<div>
+						<p class="fs-s">Add page to: <span id="parent-uri"></span><span id="new-slug"></span></p>
+					</div>
+					<div>
+						<button type="submit" class="button button--blue">Add Page</button>
+						<button type="button" id="close-add-page-dialog" class="button button--theme-1">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</dialog>
+
 	<script>
 		document.querySelectorAll('.expandable-icon').forEach(function(icon) {
 			icon.addEventListener('click', function() {
 				const isExpanded = icon.getAttribute('aria-expanded') === 'true';
 				icon.setAttribute('aria-expanded', !isExpanded);
 			});
+		});
+		document.querySelectorAll('[data-add-page]').forEach(function(button) {
+			button.addEventListener('click', function() {
+				const pageId = button.getAttribute('data-add-page');
+				const uri = button.getAttribute('data-uri');
+				document.querySelector('#parent-uri').textContent = uri;
+				document.querySelector('#add-page-dialog input[name="parent_id"]').value = pageId;
+				document.querySelector('#add-page-dialog input[name="title"]').value = '';
+				document.querySelector('#new-slug').textContent = '';
+				document.querySelector('#add-page-dialog input[name="slug"]').value = '';
+				document.getElementById('add-page-dialog').showModal();
+			});
+		});
+		document.getElementById('close-add-page-dialog').addEventListener('click', function() {
+			document.getElementById('add-page-dialog').close();
+		});
+		document.querySelector('#page-title').addEventListener('input', function() {
+			const title = this.value;
+			const slug = title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+			document.querySelector('#new-slug').textContent = `/${slug}`;
+			document.querySelector('#add-page-dialog input[name="slug"]').value = slug;
 		});
 	</script>
 {% endblock %}

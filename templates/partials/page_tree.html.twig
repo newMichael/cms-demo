@@ -16,6 +16,11 @@
 		<a href="/admin/pages/{{ page.page_id }}">
 			{{ page.title }}
 		</a>
+
+		<div class="page-item-buttons fs-s">
+			<button data-add-page="{{ page.page_id }}" data-uri="{{ page.uri }}">Add Page</button>
+			<button style="opacity:.2;cursor:auto;">Options</button>
+		</div>
 	</div>
 	{% if page.children is defined %}
 		<ul>

@@ -13,6 +13,14 @@
 		text-decoration: none;
 		background-color: var(--button_hover_bg);
 	}
+	&.button--blue {
+		color: var(--color_text);
+		background-color: var(--color_blue);
+	}
+	&.button--theme-1 {
+		color: var(--color_text);
+		background-color: var(--color_theme_1);
+	}
 }
 
 .navbar {
@@ -25,12 +33,6 @@
 			align-self: center;
 		}
 	}
-	// .navbar-inner {
-	// 	display: flex;
-	// 	justify-content: space-between;
-	// 	align-items: center;
-	// 	gap: 100px;
-	// }
 	.navbar-end {
 		flex: 1;
 		display: flex;
@@ -75,6 +77,21 @@
 	background-color: var(--panel_bg);
 }
 
+.dialog {
+	width: min(100%, 600px);
+	margin: auto;
+	padding-block: 3rem;
+	padding-inline: 30px;
+	color: var(--color_text);
+	background-color: var(--color_theme_2);
+	border-radius: 8px;
+	border: none;
+
+	&::backdrop {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
 .page-tree {
 	.page-item {
 		position: relative;
@@ -89,6 +106,11 @@
 		background-color: var(--panel_bg);
 		border-radius: 8px;
 
+		&:hover, .page-item-buttons:focus-within {
+			.page-item-buttons {
+				visibility: visible;
+			}
+		}
 		.expandable-icon {
 			&[aria-expanded="true"] {
 				svg {
@@ -103,6 +125,13 @@
 			svg {
 				width: 20px;
 			}
+		}
+		.page-item-buttons {
+			display: flex;
+			align-items: center;
+			margin-inline-start: auto;
+			gap: 10px;
+			visibility: hidden;
 		}
 	}
 	ul {

@@ -1,4 +1,4 @@
-@layer reset;
+@layer reset, elements, layout, components, utilities;
 @layer reset {
   *,
   *::before,
@@ -179,6 +179,14 @@
   text-decoration: none;
   background-color: var(--button_hover_bg);
 }
+.button.button--blue {
+  color: var(--color_text);
+  background-color: var(--color_blue);
+}
+.button.button--theme-1 {
+  color: var(--color_text);
+  background-color: var(--color_theme_1);
+}
 
 .navbar {
   padding-block: 1.5rem;
@@ -229,6 +237,20 @@
   background-color: var(--panel_bg);
 }
 
+.dialog {
+  width: min(100%, 600px);
+  margin: auto;
+  padding-block: 3rem;
+  padding-inline: 30px;
+  color: var(--color_text);
+  background-color: var(--color_theme_2);
+  border-radius: 8px;
+  border: none;
+}
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .page-tree .page-item {
   position: relative;
   display: flex;
@@ -242,6 +264,9 @@
   background-color: var(--panel_bg);
   border-radius: 8px;
 }
+.page-tree .page-item:hover .page-item-buttons, .page-tree .page-item .page-item-buttons:focus-within .page-item-buttons {
+  visibility: visible;
+}
 .page-tree .page-item .expandable-icon[aria-expanded=true] svg {
   transform: rotate(90deg);
 }
@@ -250,6 +275,13 @@
 }
 .page-tree .page-item .item-icon svg {
   width: 20px;
+}
+.page-tree .page-item .page-item-buttons {
+  display: flex;
+  align-items: center;
+  margin-inline-start: auto;
+  gap: 10px;
+  visibility: hidden;
 }
 .page-tree ul {
   padding-inline-start: 20px;
@@ -270,6 +302,201 @@
   content: "";
 }
 
+.mb-1 {
+  margin-block: var(--spacing_1);
+}
+
+.mbs-1 {
+  margin-block-start: var(--spacing_1);
+}
+
+.mbe-1 {
+  margin-block-end: var(--spacing_1);
+}
+
+.pb-1 {
+  padding-block: var(--spacing_1);
+}
+
+.pbs-1 {
+  padding-block-start: var(--spacing_1);
+}
+
+.pbe-1 {
+  padding-block-end: var(--spacing_1);
+}
+
+.mb-2 {
+  margin-block: var(--spacing_2);
+}
+
+.mbs-2 {
+  margin-block-start: var(--spacing_2);
+}
+
+.mbe-2 {
+  margin-block-end: var(--spacing_2);
+}
+
+.pb-2 {
+  padding-block: var(--spacing_2);
+}
+
+.pbs-2 {
+  padding-block-start: var(--spacing_2);
+}
+
+.pbe-2 {
+  padding-block-end: var(--spacing_2);
+}
+
+.mb-3 {
+  margin-block: var(--spacing_3);
+}
+
+.mbs-3 {
+  margin-block-start: var(--spacing_3);
+}
+
+.mbe-3 {
+  margin-block-end: var(--spacing_3);
+}
+
+.pb-3 {
+  padding-block: var(--spacing_3);
+}
+
+.pbs-3 {
+  padding-block-start: var(--spacing_3);
+}
+
+.pbe-3 {
+  padding-block-end: var(--spacing_3);
+}
+
+.mb-4 {
+  margin-block: var(--spacing_4);
+}
+
+.mbs-4 {
+  margin-block-start: var(--spacing_4);
+}
+
+.mbe-4 {
+  margin-block-end: var(--spacing_4);
+}
+
+.pb-4 {
+  padding-block: var(--spacing_4);
+}
+
+.pbs-4 {
+  padding-block-start: var(--spacing_4);
+}
+
+.pbe-4 {
+  padding-block-end: var(--spacing_4);
+}
+
+.mb-5 {
+  margin-block: var(--spacing_5);
+}
+
+.mbs-5 {
+  margin-block-start: var(--spacing_5);
+}
+
+.mbe-5 {
+  margin-block-end: var(--spacing_5);
+}
+
+.pb-5 {
+  padding-block: var(--spacing_5);
+}
+
+.pbs-5 {
+  padding-block-start: var(--spacing_5);
+}
+
+.pbe-5 {
+  padding-block-end: var(--spacing_5);
+}
+
+.mb-6 {
+  margin-block: var(--spacing_6);
+}
+
+.mbs-6 {
+  margin-block-start: var(--spacing_6);
+}
+
+.mbe-6 {
+  margin-block-end: var(--spacing_6);
+}
+
+.pb-6 {
+  padding-block: var(--spacing_6);
+}
+
+.pbs-6 {
+  padding-block-start: var(--spacing_6);
+}
+
+.pbe-6 {
+  padding-block-end: var(--spacing_6);
+}
+
+.mb-auto {
+  margin-block: auto;
+}
+
+.mbs-auto {
+  margin-block-start: auto;
+}
+
+.mbe-auto {
+  margin-block-end: auto;
+}
+
+.pb-auto {
+  padding-block: auto;
+}
+
+.pbs-auto {
+  padding-block-start: auto;
+}
+
+.pbe-auto {
+  padding-block-end: auto;
+}
+
+.fs-xs {
+  font-size: var(--fs_xs);
+}
+
+.fs-s {
+  font-size: var(--fs_s);
+}
+
+.fs-m {
+  font-size: var(--fs_m);
+}
+
+.fs-l {
+  font-size: var(--fs_l);
+}
+
+.fs-xl {
+  font-size: var(--fs_xl);
+}
+
+.link-underline {
+  text-decoration: underline;
+}
+.link-underline:hover, .link-underline:focus {
+  text-decoration: none;
+}
+
 .character-form.grid {
   --grid_columns: 2;
   margin-block: 2rem;
@@ -277,6 +504,7 @@
 
 :root {
   --ff_body: Helvetica, Arial, sans-serif;
+  --color_blue: #5CA3F5;
   --color_dark_1: #0A0A15;
   --color_dark_2: #222230;
   --color_dark_3: #393947;
@@ -288,6 +516,17 @@
   --color_dark_10: #C9C9CF;
   --color_dark_11: #EBEBED;
   --color_dark_12: #F8F8F9;
+  --spacing_1: 0.25rem;
+  --spacing_2: 0.5rem;
+  --spacing_3: 0.75rem;
+  --spacing_4: 1rem;
+  --spacing_5: 1.25rem;
+  --spacing_6: 1.5rem;
+  --fs_xs: 0.75rem;
+  --fs_s: 0.875rem;
+  --fs_m: 1rem;
+  --fs_l: 1.125rem;
+  --fs_xl: 1.25rem;
   --color_theme_1: var(--color_dark_11);
   --color_theme_2: var(--color_dark_12);
   --color_document_bg: var(--color_theme_1);

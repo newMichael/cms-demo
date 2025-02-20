@@ -1,14 +1,17 @@
-@layer reset;
+@layer reset, elements, layout, components, utilities;
 
 @import 'reset';
 @import 'elements/_all';
 @import 'layout/container';
 @import 'components/_all';
+@import 'utility';
 @import 'templates/_all';
 
 :root {
 	--ff_body: Helvetica, Arial, sans-serif;
 
+	--color_blue: #5CA3F5;
+	
 	--color_dark_1: #0A0A15;
 	--color_dark_2: #222230;
 	--color_dark_3: #393947;
@@ -20,6 +23,19 @@
 	--color_dark_10: #C9C9CF;
 	--color_dark_11: #EBEBED;
 	--color_dark_12: #F8F8F9;
+
+	--spacing_1: 0.25rem;
+	--spacing_2: 0.5rem;
+	--spacing_3: 0.75rem;
+	--spacing_4: 1rem;
+	--spacing_5: 1.25rem;
+	--spacing_6: 1.5rem;
+
+	--fs_xs: 0.75rem;
+	--fs_s: 0.875rem;
+	--fs_m: 1rem;
+	--fs_l: 1.125rem;
+	--fs_xl: 1.25rem;
 	
 	--color_theme_1: var(--color_dark_11);
 	--color_theme_2: var(--color_dark_12);

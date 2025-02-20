@@ -1,0 +1,54 @@
+// spacing
+@for $i from 1 through 6 {
+	.mb-#{$i} {
+		margin-block: var(--spacing_#{$i});
+	}
+	.mbs-#{$i} {
+		margin-block-start: var(--spacing_#{$i});
+	}
+	.mbe-#{$i} {
+		margin-block-end: var(--spacing_#{$i});
+	}
+	.pb-#{$i} {
+		padding-block: var(--spacing_#{$i});
+	}
+	.pbs-#{$i} {
+		padding-block-start: var(--spacing_#{$i});
+	}
+	.pbe-#{$i} {
+		padding-block-end: var(--spacing_#{$i});
+	}
+}
+.mb-auto {
+	margin-block: auto;
+}
+.mbs-auto {
+	margin-block-start: auto;
+}
+.mbe-auto {
+	margin-block-end: auto;
+}
+.pb-auto {
+	padding-block: auto;
+}
+.pbs-auto {
+	padding-block-start: auto;
+}
+.pbe-auto {
+	padding-block-end: auto;
+}
+
+$font_sizes: 'xs', 's', 'm', 'l', 'xl';
+@each $size in $font_sizes {
+	.fs-#{$size} {
+		font-size: var(--fs_#{$size});
+	}
+}
+
+.link-underline {
+	text-decoration: underline;
+
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
